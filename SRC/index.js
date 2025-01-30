@@ -4,7 +4,12 @@ const helmet = require('helmet');
 const morgan = require('morgan');
 const cors = require('cors');
 const path = require('path');
-const db = require('./DB/db');
+const db = require('./db/db');
+
+const clienteRoutes = require('./routes/clienteroutes'); 
+const entregadorroutes = require('./routes/entregadorroutes')
+const pedidoroutes = require('./routes/pedidoroutes')
+const produtoroutes = require('./routes/produtoroutes')
 
 
 const { METHODS } = require('http');
@@ -31,6 +36,10 @@ app.get('/', (req,res) => {
 
 
 //app.use('/', routes);
+app.use('/', clienteRoutes)
+app.use('/', entregadorroutes)
+app.use('/', pedidoroutes)
+app.use('/', produtoroutes)
 
 
 app.use((err, req, res, next) => {
