@@ -39,7 +39,7 @@ exports.listarPedidosID = async (req, res) => {
 exports.adicionarPedido = async (req, res) => {
     const { idPedido, dtPedido, qtItens, formaPagto, valorTotal, observacao, cpf, idEntregador } = req.body;
 
-    const { error } = entregadorSchema.validate({ idPedido, dtPedido, qtItens, formaPagto, valorTotal, observacao, situacao, cpf, idEntregador });
+    const { error } = pedidoSchema.validate({ idPedido, dtPedido, qtItens, formaPagto, valorTotal, observacao, situacao, cpf, idEntregador });
     if (error) {
         return res.status(400).json({ error: error.details[0].message });
     }

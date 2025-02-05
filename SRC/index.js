@@ -10,6 +10,7 @@ const clienteRoutes = require('./routes/clienteroutes');
 const entregadorroutes = require('./routes/entregadorroutes')
 const pedidoroutes = require('./routes/pedidoroutes')
 const produtoroutes = require('./routes/produtoroutes')
+const avaliacaoroutes = require('./routes/avaliacaoroutes')
 
 
 const { METHODS } = require('http');
@@ -40,7 +41,7 @@ app.use('/', clienteRoutes)
 app.use('/', entregadorroutes)
 app.use('/', pedidoroutes)
 app.use('/', produtoroutes)
-
+app.use('/', avaliacaoroutes)
 
 app.use((err, req, res, next) => {
     console.error(err.stack);
