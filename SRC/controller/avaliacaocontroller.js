@@ -14,7 +14,7 @@ exports.listarAvaliacao = async (req, res) => {
         const [result] = await db.query('SELECT * FROM avaliacao');
         res.json(result); 
     } catch (err) {
-        console.error('Erro ao buscar clientes:', err);
+        console.error('Erro ao buscar avaliação:', err);
         res.status(500).json({ error: 'Erro interno do servidor' })
     }
 }
