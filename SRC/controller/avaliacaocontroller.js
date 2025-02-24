@@ -3,7 +3,7 @@ const joi = require('joi');
 
 const avaliacaoSchema = joi.object({
     nota: joi.string().required().max(5), 
-    cometario: joi.string().required().max(100), 
+    comentario: joi.string().required().max(100), 
     dtAvaliacao: joi.string().required(), 
     cpf: joi.string().length(11).required(), 
     idPedido: joi.string().required(),
@@ -36,7 +36,6 @@ exports.listarAvaliacaoID = async (req, res) => {
 exports.adicionarAvaliacao = async (req, res) => {
     const { nota, comentario, dtAvaliacao, cpf, idPedido } = req.body;
 
-    
     const { error } = avaliacaoSchema.validate({ nota, comentario, dtAvaliacao, cpf, idPedido });
     if (error) {
         return res.status(400).json({ error: error.details[0].message });
@@ -80,7 +79,7 @@ exports.deletarAvaliacao = async (req, res) => {
     const { idAvaliacao } = req.params;
     try {
     
-    const [result] = await db.query('SELECT * FROM avaliacao WHERE avaliacao = ?', [idAvaliacao]);
+    const [result] = await db.query('SELECT * FROM avaliacao WHERE idAvaliacao = ?', [idAvaliacao]);
     if (result.length === 0) {
         return res.status(400).json({ error: 'Avaliação não encontrado'});
     }
